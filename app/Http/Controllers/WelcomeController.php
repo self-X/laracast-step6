@@ -38,5 +38,17 @@ class WelcomeController extends Controller
         return config('database.default'); //recommended
          */
 
+
+       /*
+        dd(\Hash::make('pasasword'));
+        //or
+        dd(bcrypt('password'));  //like app('hash')->make($value, $options)
+              dd(app('hash')->make('password'));
+              dd(app()['hash']->make('password'));
+              dd(app('Illuminate\Hashing\BcryptHasher')->make('password'));
+              dd(app('Illuminate\Contracts\Hashing\Hasher')->make('password'));
+       */
+
+
     }
 }
