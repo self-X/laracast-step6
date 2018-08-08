@@ -13,8 +13,12 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\Event' => [
-            'App\Listeners\EventListener',
+        'App\Events\Event' => [ //when this hapens I wonna make sure  that we do:
+            'App\Listeners\EventListener', //this and next listener ..etc
+        ],
+        //like an example
+        'App\Events\UserWasBanned' =>[
+          'App\Listeners\EmailBanNotification', //php artisan event:genarate will created these files
         ],
     ];
 

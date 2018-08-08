@@ -1,16 +1,12 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Events\UserWasBanned;
+
 
 Route::get('/', function () {
+    //fire Event 2 ways global variable or Fasade
+//    Event::fire('UserWasBanned', []);
+    $user = new  App\User;
+    event(new UserWasBanned($user));
     return view('welcome');
 });
