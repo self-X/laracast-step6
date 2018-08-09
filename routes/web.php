@@ -18,6 +18,7 @@ Route::get('/', function () {
     dd(app()['config']['database']['default']);
 });
 
+Route::get('reports', 'ReportsController@index');
 
 Route::get('test', 'WelcomeController@test');
 
