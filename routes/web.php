@@ -1,7 +1,7 @@
 <?php
 
 use App\Events\UserWasBanned;
-
+use App\User;
 
 Route::get('/', function () {
     //fire Event 2 ways global variable or Fasade
@@ -20,3 +20,24 @@ Route::get('/', function () {
 
 
 Route::get('test', 'WelcomeController@test');
+
+Route::get('login', function (){
+
+   $user = User::forceCreate([
+        'name'  => 'JohnDoe',
+        'email' => 'john@ex.com',
+        'password' => bcrypt('password'),
+    ]);
+
+    \Auth::login($user);
+
+    return redirect('/');
+});
+
+
+Route::get('middlewaretest', ['middleware' => 'subscribed', function(){
+
+    return 'Subscribtion only page';
+
+}]);
+
