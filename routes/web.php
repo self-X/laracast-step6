@@ -23,10 +23,13 @@ Route::get('test', 'WelcomeController@test');
 
 Route::get('login', function (){
 
-   $user = User::forceCreate([
+    User::truncate();
+
+   $user = User::Create([
         'name'  => 'JohnDoe',
         'email' => 'john@ex.com',
         'password' => bcrypt('password'),
+        'plan' => 'yearly',
     ]);
 
     \Auth::login($user);
@@ -35,9 +38,10 @@ Route::get('login', function (){
 });
 
 
-Route::get('middlewaretest', ['middleware' => 'subscribed', function(){
+Route::get('middlewaretest', ['middleware' => 'subscribed:yearly', function(){
+    //$this->>middleware('subscribed:yearly,two,three);  -если контроллер через : параметры,
 
-    return 'Subscribtion only page';
+    return 'Subscribtion only page if you have a monthly plan';
 
 }]);
 
