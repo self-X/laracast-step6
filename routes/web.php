@@ -3,6 +3,12 @@
 use App\Events\UserWasBanned;
 use App\User;
 
+Route::get('/blade', function(){
+    //в AppServiceProvider смотри
+    //php artisan view:clear (скоерй всего кеш чистит после него все стили перезагруажет)
+    return view('custom')->with('user', App\User::find(1));
+});
+
 Route::get('/', function () {
     //fire Event 2 ways global variable or Fasade
 //    Event::fire('UserWasBanned', []);

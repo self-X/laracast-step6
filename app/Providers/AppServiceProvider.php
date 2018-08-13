@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-
+use Blade;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -13,7 +13,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Blade::directive('hello', function($expression){
+            return "<?= 'hellor ' . $expression; ?>";
+        });
+        Blade::directive('ago', function($expression){
+            dump($expression); //$user
+            return "<?= 'user: ' . $expression  ?>"; //развернет объект
+        });
     }
 
     /**
